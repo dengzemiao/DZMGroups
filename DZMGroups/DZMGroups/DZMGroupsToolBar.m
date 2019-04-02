@@ -43,6 +43,7 @@
         self.selectColor = [UIColor redColor];
         self.sliderColor = [UIColor redColor];
         self.sliderHeight = 2;
+        self.sliderBottom = 0;
         self.sliderWidth = DZMGroupsToolBarSliderWidthFill;
         self.itemSpace = 0;
         self.sliderView = [[UIView alloc] init];
@@ -99,7 +100,7 @@
 
 /// 选中索引
 - (void)selectIndex:(NSInteger)index animated:(BOOL)animated {
-
+    
     [self selectItem:index];
     
     if (_selectIndex == index) { return ; }
@@ -112,13 +113,13 @@
         
         [UIView animateWithDuration:0.2 animations:^{
             
-            weakSelf.sliderView.frame = CGRectMake(weakSelf.selectItem.center.x - weakSelf.sliderView.frame.size.width / 2, weakSelf.frame.size.height - weakSelf.sliderHeight, weakSelf.sliderView.frame.size.width, weakSelf.sliderHeight);
+            weakSelf.sliderView.frame = CGRectMake(weakSelf.selectItem.center.x - weakSelf.sliderView.frame.size.width / 2, weakSelf.frame.size.height - weakSelf.sliderHeight + self.sliderBottom, weakSelf.sliderView.frame.size.width, weakSelf.sliderHeight);
             
         }];
         
     }else{
         
-        self.sliderView.frame = CGRectMake(self.selectItem.center.x - self.sliderView.frame.size.width / 2, self.frame.size.height - self.sliderHeight, self.sliderView.frame.size.width, self.sliderHeight);
+        self.sliderView.frame = CGRectMake(self.selectItem.center.x - self.sliderView.frame.size.width / 2, self.frame.size.height - self.sliderHeight + self.sliderBottom, self.sliderView.frame.size.width, self.sliderHeight);
     }
     
     if ([self.delegate respondsToSelector:@selector(toolBar:scrollIndex:)]) {
@@ -165,7 +166,7 @@
         item.frame = CGRectMake(itemX + i * (itemW + self.itemSpace), itemY, itemW, itemH);
         
         if (item.isSelected) { item.titleLabel.font = self.selectFont;
-
+            
         }else{ item.titleLabel.font = self.normalFont; }
         
         [item setTitleColor:self.normalColor forState:UIControlStateNormal];
@@ -179,7 +180,7 @@
     
     self.sliderView.backgroundColor = self.sliderColor;
     
-    self.sliderView.frame = CGRectMake(self.selectItem.center.x - sliderWidth / 2, self.frame.size.height - self.sliderHeight, sliderWidth, self.sliderHeight);
+    self.sliderView.frame = CGRectMake(self.selectItem.center.x - sliderWidth / 2, self.frame.size.height - self.sliderHeight + self.sliderBottom, sliderWidth, self.sliderHeight);
 }
 
 /// 滑动滑条

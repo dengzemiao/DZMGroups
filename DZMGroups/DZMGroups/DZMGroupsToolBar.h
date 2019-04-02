@@ -48,6 +48,9 @@ static CGFloat const DZMGroupsToolBarSliderWidthFill = -1;
 /// 滑条高度
 @property (nonatomic, assign) CGFloat sliderHeight;
 
+/// 滑条底部
+@property (nonatomic, assign) CGFloat sliderBottom;
+
 /// 滑条宽度 (小于0为自适应填充)
 @property (nonatomic, assign) CGFloat sliderWidth;
 
