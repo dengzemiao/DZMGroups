@@ -154,7 +154,7 @@
     
     CGFloat itemY = self.insets.top;
     
-    CGFloat itemW = ((UIScreen.mainScreen.bounds.size.width - self.insets.left - self.insets.right) - ((count - 1) * self.itemSpace)) / count;
+    CGFloat itemW = ((self.frame.size.width - self.insets.left - self.insets.right) - ((count - 1) * self.itemSpace)) / count;
     
     CGFloat itemH = self.frame.size.height - self.insets.top - self.insets.bottom;
     
