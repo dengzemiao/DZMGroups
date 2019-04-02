@@ -100,11 +100,11 @@
 /// 选中索引
 - (void)selectIndex:(NSInteger)index animated:(BOOL)animated {
 
+    [self selectItem:index];
+    
     if (_selectIndex == index) { return ; }
     
     _selectIndex = index;
-    
-    [self selectItem:index];
     
     if (animated) {
         
